@@ -1,27 +1,30 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { createStyleSheet, useStyles, UnistylesRuntime } from "react-native-unistyles";
+import "./unistyles";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const stylesheet = createStyleSheet(theme => ({
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+}));
 
 function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+    const { styles } = useStyles(stylesheet);
+    return (
+        <View style={styles.container}>
+            <Text>Open up App.tsx to start working on your app!</Text>
+        </View>
+    );
 }
 
 let AppEntryPoint = App;
 
 if (process.env.STORYBOOK_ENABLED) {
-  AppEntryPoint = require("./.ondevice").default;
+    AppEntryPoint = require("./.ondevice").default;
 }
 
 export default AppEntryPoint;
