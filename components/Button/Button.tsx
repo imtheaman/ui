@@ -3,43 +3,49 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 export type ButtonProps = {
-    onPress: () => void;
-    text: string;
-    color?: string;
-    textColor?: string;
+	onPress: () => void;
+	text: string;
+	color?: string;
+	textColor?: string;
 };
 
-const stylesheet = createStyleSheet(theme => ({
-    button: {
-        paddingVertical: 8,
-        paddingHorizontal: 16,
-        borderRadius: 4,
-        alignSelf: 'flex-start',
-        flexGrow: 0,
-        backgroundColor: 'purple',
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    buttonContainer: {
-        alignItems: 'flex-start',
-        flex: 1,
-    },
-}));
+const stylesheet = createStyleSheet({
+	button: {
+		paddingVertical: 8,
+		paddingHorizontal: 16,
+		borderRadius: 4,
+		alignSelf: 'flex-start',
+		flexGrow: 0,
+		backgroundColor: 'purple',
+	},
+	buttonText: {
+		color: 'white',
+		fontSize: 16,
+		fontWeight: 'bold',
+	},
+	buttonContainer: {
+		alignItems: 'flex-start',
+		flex: 1,
+	},
+});
 
 export const MyButton = ({ text, onPress, color, textColor }: ButtonProps) => {
-    const { styles } = useStyles(stylesheet);
+	const { styles } = useStyles(stylesheet);
 
-    return <View style={styles.buttonContainer}>
-        <TouchableOpacity
-            style={[styles.button, !!color && { backgroundColor: color }]}
-            onPress={onPress}
-            activeOpacity={0.8}>
-            <Text style={[styles.buttonText, !!textColor && { color: textColor }]}>
-                {text}
-            </Text>
-        </TouchableOpacity>
-    </View>
+	return (
+		<View style={styles.buttonContainer}>
+			<TouchableOpacity
+				style={[styles.button, !!color && { backgroundColor: color }]}
+				onPress={onPress}
+				activeOpacity={0.8}>
+				<Text
+					style={[
+						styles.buttonText,
+						!!textColor && { color: textColor },
+					]}>
+					{text}
+				</Text>
+			</TouchableOpacity>
+		</View>
+	);
 };
