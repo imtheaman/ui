@@ -1,21 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import Button from './Button';
+import TextInput from './TextInput';
 import { darkTheme } from '../../theme';
 
 const meta = {
-	title: 'components/Button',
-	component: Button,
-} satisfies Meta<typeof Button>;
+	title: 'components/TextInput',
+	component: TextInput,
+} satisfies Meta<typeof TextInput>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-	args: {
-		text: 'Hello World',
-	},
+	args: {},
 	argTypes: {
 		color: {
 			options: Object.keys(darkTheme.colors),

@@ -9,27 +9,30 @@ export type ButtonProps = {
 	textColor?: string;
 };
 
-const stylesheet = createStyleSheet({
-	button: {
-		paddingVertical: 8,
-		paddingHorizontal: 16,
-		borderRadius: 4,
-		alignSelf: 'flex-start',
-		flexGrow: 0,
-		backgroundColor: 'purple',
-	},
-	buttonText: {
-		color: 'white',
-		fontSize: 16,
-		fontWeight: 'bold',
-	},
-	buttonContainer: {
-		alignItems: 'flex-start',
-		flex: 1,
-	},
+const stylesheet = createStyleSheet(theme => {
+	console.log('THEME', Object.keys(theme));
+	return {
+		button: {
+			paddingVertical: 8,
+			paddingHorizontal: 16,
+			borderRadius: 4,
+			alignSelf: 'flex-start',
+			flexGrow: 0,
+			backgroundColor: theme.colors.primary,
+		},
+		buttonText: {
+			color: 'white',
+			fontSize: 16,
+			fontWeight: 'bold',
+		},
+		buttonContainer: {
+			alignItems: 'flex-start',
+			flex: 1,
+		},
+	};
 });
 
-export const MyButton = ({ text, onPress, color, textColor }: ButtonProps) => {
+const MyButton = ({ text, onPress, color, textColor }: ButtonProps) => {
 	const { styles } = useStyles(stylesheet);
 
 	return (
@@ -49,3 +52,5 @@ export const MyButton = ({ text, onPress, color, textColor }: ButtonProps) => {
 		</View>
 	);
 };
+
+export default MyButton;
