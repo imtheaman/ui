@@ -1,5 +1,6 @@
 const fs = require('fs');
 const readline = require('readline');
+const path = require('path');
 
 const rl = readline.createInterface({
 	input: process.stdin,
@@ -51,8 +52,14 @@ export const ${fileName} = ({}: ${fileName + 'Props'}) => {
 	};
 }
 
-function createFile(fileName, content) {
-	fs.writeFileSync(fileName, content, err => {
+function createDirectory(directoryName) {
+	fs.mkdirSync(directoryName, { recursive: true });
+}
+
+function createFile(directoryName, fileName, content) {
+	const directoryPath = path.join(__dirname, '../components/', directoryName);
+	const filePath = path.join(directoryPath, fileName);
+	fs.writeFileSync(filePath, content, err => {
 		if (err) {
 			throw err;
 		}
@@ -64,10 +71,11 @@ function promptUserAndGenerateFiles() {
 	let files = [];
 	rl.question('Enter component name: ', name => {
 		files.push(name);
+		createDirectory(path.join('components', name));
 		const boilerplateContents = generateBoilerplate(name);
-		createFile(`${name}.stories.tsx`, boilerplateContents.story);
-		createFile(`${name}.tsx`, boilerplateContents.component);
-		createFile(`${name}.spec.tsx`, boilerplateContents.test);
+		createFile(name, `${name}.stories.tsx`, boilerplateContents.story);
+		createFile(name, `${name}.tsx`, boilerplateContents.component);
+		createFile(name, `${name}.spec.tsx`, boilerplateContents.test);
 		rl.close();
 	});
 }
