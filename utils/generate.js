@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 
 function generateBoilerplate(fileName) {
 	const story = `import type { Meta, StoryObj } from "@storybook/react";
-import { ${fileName}} from "./${fileName}";
+import ${fileName} from "./${fileName}";
 
 const meta = {
     title: "components/${fileName}",
