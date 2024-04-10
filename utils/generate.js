@@ -32,8 +32,8 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 export type ${fileName + 'Props'} = {
 };
 
-const stylesheet = createStyleSheet({
-});
+const stylesheet = createStyleSheet(theme => ({
+}));
 
 export default function ${fileName}({ }: ${fileName + 'Props'}) {
 	const { styles } = useStyles(stylesheet);
