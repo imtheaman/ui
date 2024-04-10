@@ -2,7 +2,6 @@ import React from "react";
 import { Text, View } from "react-native";
 import { createStyleSheet, useStyles, UnistylesRuntime } from "react-native-unistyles";
 import "./unistyles";
-import { MyButton } from "./components/Button/Button";
 
 const stylesheet = createStyleSheet(theme => ({
     container: {
@@ -17,7 +16,7 @@ function App() {
     const { styles } = useStyles(stylesheet);
     return (
         <View style={styles.container}>
-            <MyButton />
+            <Text>Open up App.tsx to start working on your app!</Text>
         </View>
     );
 }
