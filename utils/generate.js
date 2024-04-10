@@ -35,11 +35,11 @@ export type ${fileName + 'Props'}= {
 const stylesheet = createStyleSheet({
 });
 
-export const ${fileName} = ({}: ${fileName + 'Props'}) => {
+export default function ${fileName} = ({ }: ${fileName + 'Props'}) => {
 	const { styles } = useStyles(stylesheet);
 
 	return <View>
-		</View>;
+	</View>;
 };
 `;
 
